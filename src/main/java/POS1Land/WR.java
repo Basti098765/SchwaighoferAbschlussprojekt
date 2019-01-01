@@ -7,3 +7,4 @@ public abstract class WR implements IUmrechnen
         return 0;
     }
 }
+//aadd
