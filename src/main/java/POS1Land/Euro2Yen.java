@@ -10,6 +10,7 @@ public class Euro2Yen extends WR {
 
     @Override
     protected double calc(double betrag) {
+        System.out.print("Variante Euro to Yen mit dem Betrag  " + betrag + " Euro Ergebnis: ");
         return betrag * kurs;
     }
 }
