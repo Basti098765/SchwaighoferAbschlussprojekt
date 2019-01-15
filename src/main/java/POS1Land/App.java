@@ -8,10 +8,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        WR e2d = new Euro2Dollar();
-        WR e2y = new Euro2Yen();
-
-        e2d.setNextCalc(e2y);
+        WR e2d = ChainManager.getChainOfCalculators();
 
 
         System.out.println( e2d.umrechnen("Euro2Dollar",20));
