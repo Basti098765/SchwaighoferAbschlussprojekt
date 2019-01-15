@@ -1,7 +1,5 @@
 package POS1Land.Calc;
 
-import POS1Land.IUmrechnen;
-
 public abstract class WR implements IUmrechnen {
     protected IUmrechnen nextCalc;
     protected String var;

@@ -1,6 +1,6 @@
 package POS1Land.Decorator;
 
-import POS1Land.IUmrechnen;
+import POS1Land.Calc.IUmrechnen;
 
 public class DefCalcDecorator extends CalcDecorator {
 
