@@ -16,7 +16,8 @@ public class App
 
         System.out.println( e2d.umrechnen("Euro2Dollar",20));
         System.out.println(e2d.umrechnen("Euro2Yen", 10));
-        System.out.println(e2d.umrechnen("Euro2Yen", 10));
+        System.out.println(e2d.umrechnen("Euro2Yen", 12));
+        System.out.println(e2d.umrechnen("Euro2Dollar", 24));
 
     }
 }
