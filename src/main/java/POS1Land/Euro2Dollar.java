@@ -2,11 +2,17 @@ package POS1Land;
 
 public class Euro2Dollar extends WR {
 
-    protected WR nextCalc;
-    private static String var;
+    private static double kurs = 1.14;
+
     public Euro2Dollar()
     {
-        super.kurs = 1.14;
-
+        this.var = "Euro2Dollar";
     }
+
+    @Override
+    protected double calc(double betrag) {
+        return betrag * kurs;
+    }
+
+
 }

@@ -1,10 +1,15 @@
 package POS1Land;
 
 public class Euro2Yen extends WR {
-    protected WR nextCalc;
+    private static double kurs = 123.71;
+
     public Euro2Yen()
     {
-       super.kurs=123.71;
+        this.var = "Euro2Yen";
+    }
 
+    @Override
+    protected double calc(double betrag) {
+        return betrag * kurs;
     }
 }

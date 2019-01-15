@@ -1,25 +1,26 @@
 package POS1Land;
 
-public abstract class WR implements IUmrechnen
-{
+public abstract class WR implements IUmrechnen {
     protected WR nextCalc;
-    protected double kurs;
     protected String var;
 
 
-    public void setNextCalc(WR nextCalc)
-    {
-        this.nextCalc=nextCalc;
+    public void setNextCalc(WR nextCalc) {
+        this.nextCalc = nextCalc;
     }
-    public double umrechnen(String variante, double betrag) {
-        if(this.var==variante)
-        {
-            return kurs*betrag;
-        }if(nextCalc!=null)
-        {
-            nextCalc.umrechnen(variante,betrag);
-        }
-       return betrag*kurs;
 
-}
+    public double umrechnen(String variante, double betrag) {
+        if (this.var == variante) {
+            return calc(betrag);
+        }
+        if (nextCalc != null) {
+            return nextCalc.umrechnen(variante, betrag);
+        } else {
+            return 0;
+        }
+
+
+    }
+
+    abstract protected double calc(double betrag);
 }
