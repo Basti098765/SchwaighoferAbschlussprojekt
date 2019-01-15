@@ -1,4 +1,4 @@
-package POS1Land;
+package POS1Land.Calc;
 
 public class Euro2Dollar extends WR {
 
@@ -11,7 +11,6 @@ public class Euro2Dollar extends WR {
 
     @Override
     protected double calc(double betrag) {
-        System.out.print("Variante Euro to Dollar mit dem Betrag  " + betrag + " Euro Ergebnis: ");
         return betrag * kurs;
     }
 

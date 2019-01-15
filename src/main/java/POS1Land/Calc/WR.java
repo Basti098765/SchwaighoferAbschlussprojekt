@@ -1,4 +1,6 @@
-package POS1Land;
+package POS1Land.Calc;
+
+import POS1Land.IUmrechnen;
 
 public abstract class WR implements IUmrechnen {
     protected IUmrechnen nextCalc;
@@ -11,7 +13,6 @@ public abstract class WR implements IUmrechnen {
 
     public double umrechnen(String variante, double betrag) {
         if (this.var == variante) {
-            System.out.print("Umrechnungsvorgang, ");
             return calc(betrag);
         }
         if (nextCalc != null) {

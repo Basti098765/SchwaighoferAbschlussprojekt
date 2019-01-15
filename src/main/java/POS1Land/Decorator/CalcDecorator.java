@@ -1,4 +1,6 @@
-package POS1Land;
+package POS1Land.Decorator;
+
+import POS1Land.IUmrechnen;
 
 public abstract class CalcDecorator implements IUmrechnen {
     protected IUmrechnen decoratedCalc;
