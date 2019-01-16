@@ -15,6 +15,7 @@ public class Adapter implements ISammelumrechnung {
             CalcDecorator c = new DefCalcDecorator(e2d);
             sum = sum + c.umrechnen(variante, betraege[i]);
         }
+        System.out.println("Summe der Beträge: " + sum);
         return sum;
     }
 }
