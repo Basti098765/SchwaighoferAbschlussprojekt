@@ -43,7 +43,7 @@ public class LogDAOImpl implements LogDAO {
 
 
         } catch (SQLException e) {
-
+            e.printStackTrace();
         }
         return l;
     }
