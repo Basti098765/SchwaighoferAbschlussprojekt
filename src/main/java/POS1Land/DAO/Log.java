@@ -18,6 +18,7 @@ public class Log {
         this.betrag = betrag;
         this.ergebnis = ergebnis;
         this.date = date;
+
     }
 
     public Log(String variante, double betrag, double ergebnis) {
@@ -27,7 +28,16 @@ public class Log {
         this.date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
     }
 
+    public Log(int id, String variante, double betrag, double ergebnis) {
+        this.id = id;
+        this.variante = variante;
+        this.betrag = betrag;
+        this.ergebnis = ergebnis;
+        this.date = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+    }
+
     public int getId() {
+
         return id;
     }
 
