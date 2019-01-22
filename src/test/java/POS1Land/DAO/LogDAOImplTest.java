@@ -3,6 +3,7 @@ package POS1Land.DAO;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.ListIterator;
 
 import static org.junit.Assert.assertTrue;
 
@@ -18,10 +19,12 @@ public class LogDAOImplTest {
         logDao = new LogDAOImpl();
         logDao.createLog(l);
         List<Log> loglist = logDao.getAllLogs();
-        for (Log logtest : loglist) {
-            if (logtest.getVariante() == "test") {
+        ListIterator<Log> iter = loglist.listIterator();
+        while (iter.hasNext()) {
+            System.out.println(iter.next().getVariante());
+            if (iter.next().getVariante().equals("test")) {
                 testval = true;
-                logDao.deleteLog(logtest);
+                logDao.deleteLog(iter.next());
             }
         }
 

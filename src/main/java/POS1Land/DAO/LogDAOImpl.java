@@ -6,22 +6,18 @@ import java.util.List;
 
 public class LogDAOImpl implements LogDAO {
     List<Log> logs;
-    private Connection myConn;
+    private DbConnection myConn;
     private Statement myStmt;
 
     public LogDAOImpl() {
-        try {
-            myConn = DriverManager.getConnection("jdbc:mysql://localhost:3306/wsfinal_db", "root", "");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        myConn = DbConnection.getInstance();
         logs = new ArrayList<>();
     }
 
     @Override
     public List<Log> getAllLogs() {
         try {
-            ResultSet myResult = myStmt.executeQuery("SELECT * FROM log_tbl");
+            ResultSet myResult = myConn.Connect().createStatement().executeQuery("SELECT * FROM log_tbl");
             while (myResult.next()) {
                 Log l = new Log(myResult.getInt("id"), myResult.getString("variante"), myResult.getDouble("betrag"), myResult.getDouble("ergebnis"), myResult.getDate("date"));
                 logs.add(l);
@@ -37,7 +33,7 @@ public class LogDAOImpl implements LogDAO {
 
         Log l = null;
         try {
-            ResultSet myResult = myStmt.executeQuery("SELECT * FROM log_tbl WHERE id='" + id + "'");
+            ResultSet myResult = myConn.Connect().createStatement().executeQuery("SELECT * FROM log_tbl WHERE id='" + id + "'");
 
             l = new Log(myResult.getInt("id"), myResult.getString("variante"), myResult.getDouble("betrag"), myResult.getDouble("ergebnis"), myResult.getDate("date"));
 
@@ -57,7 +53,7 @@ public class LogDAOImpl implements LogDAO {
             double ergebnis = log.getErgebnis();
             int id = log.getId();
             String sql = "UPDATE log_tbl SET date = '" + date + "', variante = '" + variante + "', `betrag` = '" + betrag + "', ergebnis = '" + ergebnis + "' WHERE log_tbl.id ='" + id + "'";
-            myStmt.executeUpdate(sql);
+            myConn.Connect().createStatement().executeUpdate(sql);
             System.out.println("Update complete");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -69,7 +65,7 @@ public class LogDAOImpl implements LogDAO {
         int id = log.getId();
         try {
             String sql = "DELETE FROM log_tbl WHERE id='" + id + "'";
-            myStmt.executeUpdate(sql);
+            myConn.Connect().createStatement().executeUpdate(sql);
             System.out.println("Delete complete");
         } catch (SQLException e) {
             e.printStackTrace();
@@ -80,7 +76,7 @@ public class LogDAOImpl implements LogDAO {
     public void createLog(Log log) {
         try {
             String sql = "INSERT INTO log_tbl(variante,betrag,ergebnis,datum)VALUES(?,?,?,?)";
-            PreparedStatement preparedStatement = myConn.prepareStatement(sql);
+            PreparedStatement preparedStatement = myConn.Connect().prepareStatement(sql);
 
             preparedStatement.setString(1, log.getVariante());
             preparedStatement.setDouble(2, log.getBetrag());
